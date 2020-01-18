@@ -13088,11 +13088,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ArticulosDev\\ArticulosWeb\\ArticulosWeb.csproj",
+      "projectUniqueName": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\ArticulosWeb.csproj",
       "projectName": "ArticulosWeb",
-      "projectPath": "D:\\ArticulosDev\\ArticulosWeb\\ArticulosWeb.csproj",
+      "projectPath": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\ArticulosWeb.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-      "outputPath": "D:\\ArticulosDev\\ArticulosWeb\\obj\\",
+      "outputPath": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
