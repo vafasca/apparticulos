@@ -49,8 +49,8 @@ namespace ArticulosWeb.Controllers
         // GET: Repuesto/Create
         public IActionResult Create()
         {
-            ViewData["AutoIdAuto"] = new SelectList(_context.Auto, "AutoId", "AutoId");
-            ViewData["CategoriaIdCategoria"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId");
+            ViewData["AutoIdAuto"] = new SelectList(_context.Auto, "AutoId", "Modelo", "", "Marca");
+            ViewData["CategoriaIdCategoria"] = new SelectList(_context.Categoria, "CategoriaId", "NombreCategoria");
             ViewData["InventarioIdAppInventario"] = new SelectList(_context.AppInventario, "InventarioId", "InventarioId");
             return View();
         }
