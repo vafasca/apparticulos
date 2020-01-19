@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.RepuestoIdRepuestoNavigation.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.GaleriaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GaleriaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GaleriaId">Delete</a>
+                @*<a asp-action="Edit" asp-route-id="@item.GaleriaId">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.GaleriaId">Detalle</a>
+                @*<a asp-action="Delete" asp-route-id="@item.GaleriaId">Delete</a>*@
             </td>
         </tr>
 }

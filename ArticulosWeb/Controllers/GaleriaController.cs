@@ -124,7 +124,7 @@ namespace ArticulosWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GaleriaId,NombreFoto,Foto,DescripcionFoto,RepuestoIdRepuesto")] Galeria galeria)
+        public async Task<IActionResult> Edit(int id, [Bind("GaleriaId,NombreFoto,DescripcionFoto,RepuestoIdRepuesto")] Galeria galeria, List<IFormFile> file)
         {
             if (id != galeria.GaleriaId)
             {
@@ -135,6 +135,20 @@ namespace ArticulosWeb.Controllers
             {
                 try
                 {
+                    //
+                    foreach (var item in file)
+                    {
+                        if (item.Length > 0)
+                        {
+                            using (var stream = new MemoryStream())
+                            {
+                                await item.CopyToAsync(stream);
+                                galeria.Foto = stream.ToArray();
+                                //stream.Close();
+                            }
+                        }
+                    }
+                    //
                     _context.Update(galeria);
                     await _context.SaveChangesAsync();
                 }
