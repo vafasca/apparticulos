@@ -13,25 +13,30 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @*@Html.DisplayNameFor(model => model.Nombre)*@
+                <label for="male">Nombre</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Precio)
+                @*@Html.DisplayNameFor(model => model.Precio)*@
+                <label for="male">Precio</label>
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Descripcion)
+            </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.Disponible)*@
+                <label for="male">Disponible</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Disponible)
+                @*@Html.DisplayNameFor(model => model.AutoIdAutoNavigation)*@
+                <label for="male">Auto</label>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AutoIdAutoNavigation)
-            </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.CategoriaIdCategoriaNavigation)
-            </th>
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.InventarioIdAppInventarioNavigation)
+                @*@Html.DisplayNameFor(model => model.InventarioIdAppInventarioNavigation)*@
+                <label for="male">Gestion de Registro</label>
             </th>
             <th></th>
         </tr>
@@ -45,18 +50,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Disponible)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AutoIdAutoNavigation.AutoId)
+                @Html.DisplayFor(modelItem => item.AutoIdAutoNavigation.Marca)<br />
+                @Html.DisplayFor(modelItem => item.AutoIdAutoNavigation.Modelo)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaIdCategoriaNavigation.CategoriaId)
-            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CategoriaIdCategoriaNavigation.NombreCategoria)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.InventarioIdAppInventarioNavigation.InventarioId)
             </td>

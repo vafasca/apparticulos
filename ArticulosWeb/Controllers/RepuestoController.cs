@@ -22,6 +22,14 @@ namespace ArticulosWeb.Controllers
         public async Task<IActionResult> Index()
         {
             var inventarioDBWContext = _context.Repuesto.Include(r => r.AutoIdAutoNavigation).Include(r => r.CategoriaIdCategoriaNavigation).Include(r => r.InventarioIdAppInventarioNavigation);
+            //
+                //        var repuesto = await _context.Repuesto
+                //.Include(r => r.AutoIdAutoNavigation)
+                //.Include(r => r.CategoriaIdCategoriaNavigation)
+                //.Include(r => r.InventarioIdAppInventarioNavigation)
+                //.FirstOrDefaultAsync(m => m.RepuestoId == id);
+            //
+            //ViewBag.Nom = 
             return View(await inventarioDBWContext.ToListAsync());
         }
 
@@ -101,8 +109,8 @@ namespace ArticulosWeb.Controllers
             {
                 return NotFound();
             }
-            ViewData["AutoIdAuto"] = new SelectList(_context.Auto, "AutoId", "AutoId", repuesto.AutoIdAuto);
-            ViewData["CategoriaIdCategoria"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", repuesto.CategoriaIdCategoria);
+            ViewData["AutoIdAuto"] = new SelectList(_context.Auto, "AutoId", "Modelo", repuesto.AutoIdAuto);
+            ViewData["CategoriaIdCategoria"] = new SelectList(_context.Categoria, "CategoriaId", "NombreCategoria", repuesto.CategoriaIdCategoria);
             ViewData["InventarioIdAppInventario"] = new SelectList(_context.AppInventario, "InventarioId", "InventarioId", repuesto.InventarioIdAppInventario);
             return View(repuesto);
         }

@@ -35,20 +35,24 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Disponible)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AutoIdAutoNavigation)
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.AutoIdAutoNavigation)*@
+            <label for="male">Auto</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AutoIdAutoNavigation.Marca)
+            @Html.DisplayFor(model => model.AutoIdAutoNavigation.Modelo)
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.CategoriaIdCategoriaNavigation)*@
+            <label for="male">Categoria</label>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AutoIdAutoNavigation.AutoId)
+            @Html.DisplayFor(model => model.CategoriaIdCategoriaNavigation.NombreCategoria)
         </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoriaIdCategoriaNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategoriaIdCategoriaNavigation.CategoriaId)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InventarioIdAppInventarioNavigation)
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.InventarioIdAppInventarioNavigation)*@
+            <label for="male">Gestion</label>
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.InventarioIdAppInventarioNavigation.InventarioId)

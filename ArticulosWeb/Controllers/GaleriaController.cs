@@ -56,7 +56,7 @@ namespace ArticulosWeb.Controllers
         // GET: Galeria/Create
         public IActionResult Create()
         {
-            ViewData["RepuestoIdRepuesto"] = new SelectList(_context.Repuesto, "RepuestoId", "RepuestoId");
+            ViewData["RepuestoIdRepuesto"] = new SelectList(_context.Repuesto, "RepuestoId", "Nombre");
             return View();
         }
 
