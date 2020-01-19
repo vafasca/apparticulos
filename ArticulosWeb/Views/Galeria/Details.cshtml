@@ -30,11 +30,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DescripcionFoto)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)*@
+            <label for="male">Repuesto</label>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RepuestoIdRepuestoNavigation.RepuestoId)
+            @Html.DisplayFor(model => model.RepuestoIdRepuestoNavigation.Nombre)
         </dd>
     </dl>
 </div>

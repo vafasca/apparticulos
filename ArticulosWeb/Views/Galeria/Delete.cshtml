@@ -17,23 +17,24 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NombreFoto)
         </dd>
-        @*<dt class = "col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Foto)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
-        </dd>*@
+            <img src="@ViewBag.ImageData" height="200" width="200" />
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DescripcionFoto)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DescripcionFoto)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)*@
+            <label for="male">Repuesto</label>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RepuestoIdRepuestoNavigation.RepuestoId)
+            @Html.DisplayFor(model => model.RepuestoIdRepuestoNavigation.Nombre)
         </dd class>
     </dl>
     

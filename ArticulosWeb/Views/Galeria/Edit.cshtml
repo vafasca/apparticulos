@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" class="form-control" />
+                <input asp-for="Foto" type="file" name="file" id="file" multiple />
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,7 +29,8 @@
                 <span asp-validation-for="DescripcionFoto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RepuestoIdRepuesto" class="control-label"></label>
+                @*<label asp-for="RepuestoIdRepuesto" class="control-label"></label>*@
+                <label for="male">Repuesto</label>
                 <select asp-for="RepuestoIdRepuesto" class="form-control" asp-items="ViewBag.RepuestoIdRepuesto"></select>
                 <span asp-validation-for="RepuestoIdRepuesto" class="text-danger"></span>
             </div>

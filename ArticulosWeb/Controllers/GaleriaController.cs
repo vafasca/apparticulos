@@ -41,7 +41,6 @@ namespace ArticulosWeb.Controllers
 
             string imageBase64Data = Convert.ToBase64String(galeria.Foto);
             string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
-            //string imageurl1 = string.Format("data:image/png;base64,{1}", imageBase64Data);
             ViewBag.ImageData = imageDataURL;
             //
             var a = galeria.Foto;
@@ -116,7 +115,7 @@ namespace ArticulosWeb.Controllers
             {
                 return NotFound();
             }
-            ViewData["RepuestoIdRepuesto"] = new SelectList(_context.Repuesto, "RepuestoId", "RepuestoId", galeria.RepuestoIdRepuesto);
+            ViewData["RepuestoIdRepuesto"] = new SelectList(_context.Repuesto, "RepuestoId", "Nombre", galeria.RepuestoIdRepuesto);
             return View(galeria);
         }
 
@@ -167,6 +166,7 @@ namespace ArticulosWeb.Controllers
             var galeria = await _context.Galeria
                 .Include(g => g.RepuestoIdRepuestoNavigation)
                 .FirstOrDefaultAsync(m => m.GaleriaId == id);
+
             if (galeria == null)
             {
                 return NotFound();
