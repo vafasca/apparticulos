@@ -67,40 +67,36 @@ namespace ArticulosWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GaleriaId,NombreFoto,DescripcionFoto,RepuestoIdRepuesto")] Galeria galeria, List<IFormFile> file)
         {
-            var tam = file.Count;//
-            //var asd1 = file[0];
-            //var asd2 = file[1];
             if (ModelState.IsValid)
             {
-                ViewData["dato1"] = galeria.NombreFoto;//kick
+                //ViewData["dato1"] = galeria.NombreFoto;//kick
                 foreach(var item in file)
                 {
-                    if(item.Length>0)//valida que existe
+                    if(item.Length>0)
                     {
                         using (var stream = new MemoryStream())
                         {
                             await item.CopyToAsync(stream);
                             galeria.Foto = stream.ToArray();
-                            stream.Close();   
+                            //stream.Close();  
+                            int aux = 1;
+                            var bb = _context.Galeria
+                                   .OrderByDescending(p => p.GaleriaId)
+                                   .FirstOrDefault();
+                            if (bb == null)
+                            {
+                                galeria.GaleriaId = aux;
+                            }
+                            else
+                            {
+                                aux = bb.GaleriaId;
+                                galeria.GaleriaId = aux + 1;
+                            }
+                            _context.Add(galeria);
+                            await _context.SaveChangesAsync();
                         }
                     }
                 }
-                //-------
-                int aux = 1;
-                var bb = _context.Galeria
-                       .OrderByDescending(p => p.GaleriaId)
-                       .FirstOrDefault();
-                if (bb == null)
-                {
-                    galeria.GaleriaId = aux;
-                }
-                else
-                {
-                    aux = bb.GaleriaId;
-                    galeria.GaleriaId = aux + 1;
-                }
-                _context.Add(galeria);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["RepuestoIdRepuesto"] = new SelectList(_context.Repuesto, "RepuestoId", "RepuestoId", galeria.RepuestoIdRepuesto);
