@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace ArticulosWeb.Controllers
 {
@@ -36,6 +38,13 @@ namespace ArticulosWeb.Controllers
             var galeria = await _context.Galeria
                 .Include(g => g.RepuestoIdRepuestoNavigation)
                 .FirstOrDefaultAsync(m => m.GaleriaId == id);
+
+            string imageBase64Data = Convert.ToBase64String(galeria.Foto);
+            string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+            //string imageurl1 = string.Format("data:image/png;base64,{1}", imageBase64Data);
+            ViewBag.ImageData = imageDataURL;
+            //
+            var a = galeria.Foto;
             if (galeria == null)
             {
                 return NotFound();
@@ -56,14 +65,30 @@ namespace ArticulosWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GaleriaId,NombreFoto,Foto,DescripcionFoto,RepuestoIdRepuesto")] Galeria galeria)
+        public async Task<IActionResult> Create([Bind("GaleriaId,NombreFoto,DescripcionFoto,RepuestoIdRepuesto")] Galeria galeria, List<IFormFile> file)
         {
+            var tam = file.Count;//
+            //var asd1 = file[0];
+            //var asd2 = file[1];
             if (ModelState.IsValid)
             {
-                string a = "";
+                ViewData["dato1"] = galeria.NombreFoto;//kick
+                foreach(var item in file)
+                {
+                    if(item.Length>0)//valida que existe
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await item.CopyToAsync(stream);
+                            galeria.Foto = stream.ToArray();
+                            stream.Close();   
+                        }
+                    }
+                }
+                //-------
                 int aux = 1;
-                var bb = _context.Auto
-                       .OrderByDescending(p => p.AutoId)
+                var bb = _context.Galeria
+                       .OrderByDescending(p => p.GaleriaId)
                        .FirstOrDefault();
                 if (bb == null)
                 {
@@ -71,7 +96,7 @@ namespace ArticulosWeb.Controllers
                 }
                 else
                 {
-                    aux = bb.AutoId;
+                    aux = bb.GaleriaId;
                     galeria.GaleriaId = aux + 1;
                 }
                 _context.Add(galeria);
