@@ -34,17 +34,20 @@
                 <span asp-validation-for="Disponible" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AutoIdAuto" class="control-label"></label>
+                @*<label asp-for="AutoIdAuto" class="control-label"></label>*@
+                <label for="male">Auto</label>
                 <select asp-for="AutoIdAuto" class="form-control" asp-items="ViewBag.AutoIdAuto"></select>
                 <span asp-validation-for="AutoIdAuto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoriaIdCategoria" class="control-label"></label>
+                @*<label asp-for="CategoriaIdCategoria" class="control-label"></label>*@
+                <label for="male">Categoria</label>
                 <select asp-for="CategoriaIdCategoria" class="form-control" asp-items="ViewBag.CategoriaIdCategoria"></select>
                 <span asp-validation-for="CategoriaIdCategoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InventarioIdAppInventario" class="control-label"></label>
+                @*<label asp-for="InventarioIdAppInventario" class="control-label"></label>*@
+                <label for="male">Gestion</label>
                 <select asp-for="InventarioIdAppInventario" class="form-control" asp-items="ViewBag.InventarioIdAppInventario"></select>
                 <span asp-validation-for="InventarioIdAppInventario" class="text-danger"></span>
             </div>
