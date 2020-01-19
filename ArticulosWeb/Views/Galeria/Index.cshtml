@@ -22,7 +22,8 @@
                 @Html.DisplayNameFor(model => model.DescripcionFoto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)
+                @*@Html.DisplayNameFor(model => model.RepuestoIdRepuestoNavigation)*@
+                <label for="male">Repuesto</label>
             </th>
             <th></th>
         </tr>
@@ -40,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.DescripcionFoto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RepuestoIdRepuestoNavigation.RepuestoId)
+                @Html.DisplayFor(modelItem => item.RepuestoIdRepuestoNavigation.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.GaleriaId">Edit</a> |
