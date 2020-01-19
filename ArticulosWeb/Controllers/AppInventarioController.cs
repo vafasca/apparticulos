@@ -62,8 +62,8 @@ namespace ArticulosWeb.Controllers
             {
                 string a = "";
                 int aux = 1;
-                var bb = _context.Auto
-                       .OrderByDescending(p => p.AutoId)
+                var bb = _context.AppInventario
+                       .OrderByDescending(p => p.InventarioId)
                        .FirstOrDefault();
                 if (bb == null)
                 {
@@ -71,7 +71,7 @@ namespace ArticulosWeb.Controllers
                 }
                 else
                 {
-                    aux = bb.AutoId;
+                    aux = bb.InventarioId;
                     appInventario.InventarioId = aux + 1;
                 }
                 _context.Add(appInventario);

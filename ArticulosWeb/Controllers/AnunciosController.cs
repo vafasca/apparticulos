@@ -59,8 +59,8 @@ namespace ArticulosWeb.Controllers
             {
                 string a = "";
                 int aux = 1;
-                var bb = _context.Auto
-                       .OrderByDescending(p => p.AutoId)
+                var bb = _context.Anuncio
+                       .OrderByDescending(p => p.AnuncioId)
                        .FirstOrDefault();
                 if (bb == null)
                 {
@@ -68,7 +68,7 @@ namespace ArticulosWeb.Controllers
                 }
                 else
                 {
-                    aux = bb.AutoId;
+                    aux = bb.AnuncioId;
                     anuncio.AnuncioId = aux + 1;
                 }
                 _context.Add(anuncio);
