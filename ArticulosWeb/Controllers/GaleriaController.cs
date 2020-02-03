@@ -43,6 +43,10 @@ namespace ArticulosWeb.Controllers
             string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
             ViewBag.ImageData = imageDataURL;
             //
+            var auxppt = galeria.Foto.FirstOrDefault();
+            string conv = string.Format("data:image/png;base64,{0}", imageBase64Data);
+            ViewBag.imageDat = conv;
+            //
             var a = galeria.Foto;
             if (galeria == null)
             {
