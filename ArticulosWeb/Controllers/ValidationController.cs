@@ -20,18 +20,17 @@ namespace ArticulosWeb.Controllers
         }
         public ActionResult Login()
         {
+            return View();
+        }
+
+         public ActionResult Verificar(string usuario, string pass)
+        {
             //Roles del Sistema
             ViewBag.admin = "Administrador";
             ViewBag.trabajar = "trabajar";
             ViewBag.contratar = "contratar";
             ViewBag.finanzas = "finanzas";
             ViewBag.vip = "vip";
-            return View();
-        }
-
-        public ActionResult Verificar(string usuario, string pass)
-        {
-            
             //
             var bb = _context.Cliente
             .OrderByDescending(p => p.ClienteId)
