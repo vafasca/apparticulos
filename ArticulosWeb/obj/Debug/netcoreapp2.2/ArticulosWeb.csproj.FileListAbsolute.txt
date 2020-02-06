@@ -142,3 +142,4 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.Vi
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.dll
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.pdb
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.csproj.CopyComplete
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Validation\Login.g.cshtml.cs
