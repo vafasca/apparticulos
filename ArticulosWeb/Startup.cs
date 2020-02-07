@@ -14,6 +14,7 @@ using ArticulosWeb.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ArticulosWeb.Models;
+using ArticulosWeb.Data;
 
 namespace ArticulosWeb
 {
@@ -42,19 +43,27 @@ namespace ArticulosWeb
             services.AddDbContext<InventarioDBWContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>()
+                            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+                            {
+                                options.Stores.MaxLengthForKeys = 128;
+                                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+                                options.Lockout.MaxFailedAccessAttempts = 2;
+                                options.Password.RequireDigit = false;
+                                options.Password.RequiredLength = 6;
+                                options.Password.RequiredUniqueChars = 1;
+                                options.Password.RequireLowercase = false;
+                                options.Password.RequireNonAlphanumeric = false;
+                                options.Password.RequireUppercase = false;
+                            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext appContext, InventarioDBWContext cominoContext, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -80,6 +89,8 @@ namespace ArticulosWeb
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DummyData.Initialize(appContext, cominoContext, userManager, roleManager).Wait();
         }
     }
 }
