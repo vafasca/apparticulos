@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArticulosWeb.Controllers
 {
+    [Authorize(Roles = "Administrador,Usuario")]
     public class GaleriaController : Controller
     {
         private readonly InventarioDBWContext _context;
