@@ -11,99 +11,85 @@ using Microsoft.AspNetCore.Authorization;
 namespace ArticulosWeb.Controllers
 {
     [Authorize(Roles = "Administrador,Usuario")]
-    public class ClientesController : Controller
+    public class AspNetUsersController : Controller
     {
         private readonly InventarioDBWContext _context;
 
-        public ClientesController(InventarioDBWContext context)
+        public AspNetUsersController(InventarioDBWContext context)
         {
             _context = context;
         }
 
-        // GET: Clientes
+        // GET: AspNetUsers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cliente.ToListAsync());
+            return View(await _context.AspNetUsers.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: AspNetUsers/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.ClienteId == id);
-            if (cliente == null)
+            var aspNetUsers = await _context.AspNetUsers
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (aspNetUsers == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(aspNetUsers);
         }
 
-        // GET: Clientes/Create
+        // GET: AspNetUsers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: AspNetUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteId,Nombre,Apellido,Celular,Ci,FechaRegistro")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount,IdPer,FirstName,LastName,Street,City,Province,PostalCode,Country")] AspNetUsers aspNetUsers)
         {
             if (ModelState.IsValid)
             {
-                string a = "";
-                int aux = 1;
-                var bb = _context.Auto
-                       .OrderByDescending(p => p.AutoId)
-                       .FirstOrDefault();
-                if (bb == null)
-                {
-                    cliente.ClienteId = aux;
-                }
-                else
-                {
-                    aux = bb.AutoId;
-                    cliente.ClienteId = aux + 1;
-                }
-                _context.Add(cliente);
+                _context.Add(aspNetUsers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(aspNetUsers);
         }
 
-        // GET: Clientes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: AspNetUsers/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente.FindAsync(id);
-            if (cliente == null)
+            var aspNetUsers = await _context.AspNetUsers.FindAsync(id);
+            if (aspNetUsers == null)
             {
                 return NotFound();
             }
-            return View(cliente);
+            return View(aspNetUsers);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: AspNetUsers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nombre,Apellido,Celular,Ci,FechaRegistro")] Cliente cliente)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount,IdPer,FirstName,LastName,Street,City,Province,PostalCode,Country")] AspNetUsers aspNetUsers)
         {
-            if (id != cliente.ClienteId)
+            if (id != aspNetUsers.Id)
             {
                 return NotFound();
             }
@@ -112,12 +98,12 @@ namespace ArticulosWeb.Controllers
             {
                 try
                 {
-                    _context.Update(cliente);
+                    _context.Update(aspNetUsers);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.ClienteId))
+                    if (!AspNetUsersExists(aspNetUsers.Id))
                     {
                         return NotFound();
                     }
@@ -128,41 +114,41 @@ namespace ArticulosWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(aspNetUsers);
         }
 
-        // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: AspNetUsers/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.ClienteId == id);
-            if (cliente == null)
+            var aspNetUsers = await _context.AspNetUsers
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (aspNetUsers == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(aspNetUsers);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: AspNetUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
-            _context.Cliente.Remove(cliente);
+            var aspNetUsers = await _context.AspNetUsers.FindAsync(id);
+            _context.AspNetUsers.Remove(aspNetUsers);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClienteExists(int id)
+        private bool AspNetUsersExists(string id)
         {
-            return _context.Cliente.Any(e => e.ClienteId == id);
+            return _context.AspNetUsers.Any(e => e.Id == id);
         }
     }
 }

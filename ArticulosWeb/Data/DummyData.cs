@@ -18,10 +18,19 @@ namespace ArticulosWeb.Data
 
             string adminRole = "Administrador";
             string adminDesc = "Rol de Administrador, con acceso a las configuraciones del Sistema.";
-
+            //---------------------------
             string usuarioRole = "Usuario";
             string usuarioDesc = "Rol de Usuaro, con acceeso a la funcionalidad del Sistema.";
-
+            //---------------------------
+            string trabajarRole = "Trabajar";
+            string trabajarDesc = "Rol de Trabajar, con acceeso a la funcionalidad del Sistema.";
+            //---------------------------
+            string contratarRole = "Contratar";
+            string contratarDesc = "Rol de Contratar, con acceeso a la funcionalidad del Sistema.";
+            //---------------------------
+            string vipRole = "VIP";
+            string vipDesc = "Rol de VIP, con acceeso a la funcionalidad del Sistema.";
+            //---------------------------
             string adminCredential = "admin@root.net";
             string userCredential = "user@root.net";
 
@@ -34,6 +43,18 @@ namespace ArticulosWeb.Data
             if (await roleManager.FindByNameAsync(usuarioRole) == null)
             {
                 await roleManager.CreateAsync(new ApplicationRole(usuarioRole, usuarioDesc, DateTime.Now));
+            }
+            if (await roleManager.FindByNameAsync(trabajarRole) == null)
+            {
+                await roleManager.CreateAsync(new ApplicationRole(trabajarRole, trabajarDesc, DateTime.Now));
+            }
+            if (await roleManager.FindByNameAsync(contratarRole) == null)
+            {
+                await roleManager.CreateAsync(new ApplicationRole(contratarRole, contratarDesc, DateTime.Now));
+            }
+            if (await roleManager.FindByNameAsync(vipRole) == null)
+            {
+                await roleManager.CreateAsync(new ApplicationRole(vipRole, vipDesc, DateTime.Now));
             }
 
             if (await userManager.FindByNameAsync(adminCredential) == null)

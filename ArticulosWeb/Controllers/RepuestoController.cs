@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArticulosWeb.Controllers
 {
+    [Authorize(Roles = "Administrador,Usuario")]
     public class RepuestoController : Controller
     {
         private readonly InventarioDBWContext _context;

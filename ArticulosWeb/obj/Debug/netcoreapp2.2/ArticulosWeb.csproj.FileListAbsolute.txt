@@ -142,3 +142,8 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.Vi
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.dll
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.pdb
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.csproj.CopyComplete
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Create.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Delete.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Details.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Edit.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Index.g.cshtml.cs
