@@ -147,3 +147,13 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Asp
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Details.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Edit.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUsers\Index.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetRoles\Create.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetRoles\Delete.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetRoles\Details.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetRoles\Edit.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetRoles\Index.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUserRoles\Create.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUserRoles\Delete.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUserRoles\Details.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUserRoles\Edit.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AspNetUserRoles\Index.g.cshtml.cs

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Text;
 
 namespace ArticulosWeb.Controllers
 {
@@ -57,8 +60,48 @@ namespace ArticulosWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount,IdPer,FirstName,LastName,Street,City,Province,PostalCode,Country")] AspNetUsers aspNetUsers)
         {
+
             if (ModelState.IsValid)
             {
+                //
+                
+                string password = aspNetUsers.PasswordHash;
+
+                //// generate a 128-bit salt using a secure PRNG
+                //byte[] salt = new byte[128 / 8];
+                //using (var rng = RandomNumberGenerator.Create())
+                //{
+                //    rng.GetBytes(salt);
+                //}
+                //Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
+
+                //// derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+                //string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                //    password: password,
+                //    salt: salt,
+                //    prf: KeyDerivationPrf.HMACSHA1,
+                //    iterationCount: 10000,
+                //    numBytesRequested: 256 / 8));
+                //Console.WriteLine($"Hashed: {hashed}");
+                //
+                byte[] salt = new byte[128 / 8];
+                using (var generator = RandomNumberGenerator.Create())
+
+                    generator.GetBytes(salt);
+                string rpt2 = Convert.ToBase64String(salt);
+                //
+                var valueBytes = KeyDerivation.Pbkdf2(
+                             password: password,
+                             salt: Encoding.UTF8.GetBytes(rpt2),
+                             prf: KeyDerivationPrf.HMACSHA512,
+                             iterationCount: 10000,
+                             numBytesRequested: 256 / 8);
+
+                var rpt = Convert.ToBase64String(valueBytes);
+                //
+                aspNetUsers.PasswordHash = rpt;
+                //
+
                 _context.Add(aspNetUsers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
