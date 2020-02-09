@@ -13,7 +13,7 @@ using System.Text;
 
 namespace ArticulosWeb.Controllers
 {
-    [Authorize(Roles = "Administrador,Usuario")]
+    //[Authorize(Roles = "Administrador,Usuario")]
     public class AspNetUsersController : Controller
     {
         private readonly InventarioDBWContext _context;

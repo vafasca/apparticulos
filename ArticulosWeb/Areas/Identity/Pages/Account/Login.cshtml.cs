@@ -80,7 +80,7 @@ namespace ArticulosWeb.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? Url.Content("~/"); //"~/AQUI PONER EL URL PARA REDIRIGIR AL INICIAR SESION"
             Console.WriteLine("onPostAsync");
             if (ModelState.IsValid)
             {
