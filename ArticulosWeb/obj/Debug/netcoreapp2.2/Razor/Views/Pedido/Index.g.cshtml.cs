@@ -24,7 +24,7 @@ using ArticulosWeb.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5ef0e6f3b32cad3dfaa3f8faf9f17cd3958444b5", @"/Views/Pedido/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48f6e55bcfe1ed0957fa47b4ab31dbdf94f7a87a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7f7a93900f78d85ba9017cab4995a2d67c0b0f16", @"/Views/_ViewImports.cshtml")]
     public class Views_Pedido_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<ArticulosWeb.Models.Pedido>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

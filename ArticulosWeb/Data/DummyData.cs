@@ -28,8 +28,8 @@ namespace ArticulosWeb.Data
             string contratarRole = "Contratar";
             string contratarDesc = "Rol de Contratar, con acceeso a la funcionalidad del Sistema.";
             //---------------------------
-            string vipRole = "VIP";
-            string vipDesc = "Rol de VIP, con acceeso a la funcionalidad del Sistema.";
+            //string vipRole = "VIP";
+            //string vipDesc = "Rol de VIP, con acceeso a la funcionalidad del Sistema.";
             //---------------------------
             string adminCredential = "admin@root.net";
             string userCredential = "user@root.net";
@@ -52,10 +52,10 @@ namespace ArticulosWeb.Data
             {
                 await roleManager.CreateAsync(new ApplicationRole(contratarRole, contratarDesc, DateTime.Now));
             }
-            if (await roleManager.FindByNameAsync(vipRole) == null)
-            {
-                await roleManager.CreateAsync(new ApplicationRole(vipRole, vipDesc, DateTime.Now));
-            }
+            //if (await roleManager.FindByNameAsync(vipRole) == null)
+            //{
+            //    await roleManager.CreateAsync(new ApplicationRole(vipRole, vipDesc, DateTime.Now));
+            //}
 
             if (await userManager.FindByNameAsync(adminCredential) == null)
             {
