@@ -98,10 +98,26 @@ namespace ArticulosWeb.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? Url.Content("~/AspNetUserRoles/Create");//aqui el redirect despues de registrarse al igual que login
             if (ModelState.IsValid)
             {
+                //
+                int startInex = 0;
+                int length = 3;
+                string ema = Input.Email.Substring(startInex, length);
+                //
+                var encrip = Input.FirstName + Input.Password + ema;
+                //
+                string resultado = "";
+                Byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(encrip);
+                resultado = Convert.ToBase64String(encriptar);
+                ////desencriptar
+                //string resultado2 = "";
+                //Byte[] desencriptar = Convert.FromBase64String(resultado);
+                //resultado2 = System.Text.Encoding.Unicode.GetString(desencriptar);
+                //
                 var user = new ApplicationUser {
+                    Id = resultado,//id
                     UserName = Input.Email,
                     Email = Input.Email,
                     FirstName = Input.FirstName,

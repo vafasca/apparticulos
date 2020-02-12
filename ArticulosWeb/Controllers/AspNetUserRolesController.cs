@@ -6,15 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using ArticulosWeb.Areas.Identity.Pages.Account;
 
 namespace ArticulosWeb.Controllers
 {
     public class AspNetUserRolesController : Controller
     {
         private readonly InventarioDBWContext _context;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger<LoginModel> _logger;
 
-        public AspNetUserRolesController(InventarioDBWContext context)
+        public AspNetUserRolesController(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, InventarioDBWContext context)
         {
+            _signInManager = signInManager;
+            _logger = logger;
             _context = context;
         }
 
@@ -48,8 +55,8 @@ namespace ArticulosWeb.Controllers
         // GET: AspNetUserRoles/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
+            ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Name");
+            //ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
             return View();
         }
 
@@ -62,11 +69,32 @@ namespace ArticulosWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                var usr = User.Identity.Name;
+                var progu = from gesty in _context.AspNetUsers
+                            where gesty.UserName == usr
+                            select gesty.Id;
+                string convertp = progu.FirstOrDefault();
+                //
+           
+                var contratar = from gesty in _context.AspNetRoles
+                            where gesty.Name== "Contratar"
+                                select gesty.Id;
+                string IdContratar = contratar.FirstOrDefault();
+                //
+
+                var trabajar = from gesty in _context.AspNetRoles
+                            where gesty.Name == "Trabajar"
+                               select gesty.Id;
+                string IdTrabajar = progu.FirstOrDefault();
+                //
+
+                aspNetUserRoles.UserId = convertp;
+                aspNetUserRoles.RoleId = IdContratar;
                 _context.Add(aspNetUserRoles);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Id", aspNetUserRoles.RoleId);
+            //ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Id", aspNetUserRoles.RoleId);
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", aspNetUserRoles.UserId);
             return View(aspNetUserRoles);
         }
