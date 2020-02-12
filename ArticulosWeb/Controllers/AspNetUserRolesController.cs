@@ -56,47 +56,49 @@ namespace ArticulosWeb.Controllers
         public IActionResult Create()
         {
             ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Name");
-            //ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
             return View();
         }
 
         // POST: AspNetUserRoles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,RoleId")] AspNetUserRoles aspNetUserRoles)
         {
             if (ModelState.IsValid)
             {
-                var usr = User.Identity.Name;
-                var progu = from gesty in _context.AspNetUsers
-                            where gesty.UserName == usr
-                            select gesty.Id;
-                string convertp = progu.FirstOrDefault();
-                //
-           
-                var contratar = from gesty in _context.AspNetRoles
-                            where gesty.Name== "Contratar"
-                                select gesty.Id;
-                string IdContratar = contratar.FirstOrDefault();
-                //
-
-                var trabajar = from gesty in _context.AspNetRoles
-                            where gesty.Name == "Trabajar"
-                               select gesty.Id;
-                string IdTrabajar = progu.FirstOrDefault();
-                //
-
-                aspNetUserRoles.UserId = convertp;
-                aspNetUserRoles.RoleId = IdContratar;
                 _context.Add(aspNetUserRoles);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Id", aspNetUserRoles.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.AspNetRoles, "Id", "Id", aspNetUserRoles.RoleId);
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", aspNetUserRoles.UserId);
             return View(aspNetUserRoles);
+        }
+
+        public async Task<IActionResult> Check(AspNetUserRoles aspNetUserRoles, string button)
+        {
+            var hh = "~/";
+            //####################
+            var usr = User.Identity.Name;
+            var progu = from gesty in _context.AspNetUsers
+                        where gesty.UserName == usr
+                        select gesty.Id;
+            string convertp = progu.FirstOrDefault();
+            //####################
+            var contratar = from gesty in _context.AspNetRoles
+                            where gesty.Name == button
+                            select gesty.Id;
+            string IdContratar = contratar.FirstOrDefault();
+
+            aspNetUserRoles.UserId = convertp;
+            aspNetUserRoles.RoleId = IdContratar;
+            _context.Add(aspNetUserRoles);
+            await _context.SaveChangesAsync();
+            return Redirect("~/");
         }
 
         // GET: AspNetUserRoles/Edit/5

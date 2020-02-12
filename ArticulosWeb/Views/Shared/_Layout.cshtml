@@ -32,7 +32,7 @@
                         @*<li class="nav-item">
             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>*@
-                        @if (User.IsInRole("Administrador"))
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Contratar"))
                         {
                             <li class="nav-item">
                                 <div class="dropdown">
@@ -48,38 +48,38 @@
                                 </div>
                             </li>
                         }
-                        @if (User.IsInRole("VIP"))
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         }
 
-                        @*@if (User.IsInRole("Administrador"))
-                        {*@
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="AspNetUsers" asp-action="Index">ASP</a>
                             </li>
-                        @*}*@
-                        @if (User.IsInRole("Administrador"))
+                        }
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="AspNetUserRoles" asp-action="Index">Roles</a>
                             </li>
                         }
-                        @if (User.IsInRole("Administrador"))
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Pedido" asp-action="Index">Pedido</a>
                             </li>
                         }
-                            @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                                 </li>
                             }
-                            @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Anuncios" asp-action="Index">Anuncios</a>

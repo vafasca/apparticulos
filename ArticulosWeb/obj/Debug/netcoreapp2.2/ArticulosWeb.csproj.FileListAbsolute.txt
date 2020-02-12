@@ -191,3 +191,4 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\bin\Debug\netcoreapp2.2\NLog.config
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Error.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Contratar\Contratar.g.cshtml.cs

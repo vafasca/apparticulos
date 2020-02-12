@@ -4,31 +4,18 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Bienvenido al Sistema</h1>
 
-<h4>AspNetUserRoles</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="RoleId" class="control-label"></label>
-                <select asp-for="RoleId" class ="form-control" asp-items="ViewBag.RoleId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<h4>Que busca hacer hoy?</h4>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <form style="text-align:center">
+        <h4>Contratar</h4>
+        <button name="button" value="Contratar" asp-action="Check"><img src="https://i.ibb.co/qBft6Bz/contract.png" width="70" height="70"/></button><br /><br />
+        <h4>Trabajar</h4>
+        <button name="button" value="Trabajar" asp-action="Check"><img src="https://i.ibb.co/kDm8RMF/trabajar.png" width="70" height="70"/></button>
+
+    </form>
 </div>
 
 @section Scripts {
