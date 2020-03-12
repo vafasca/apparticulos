@@ -1,8 +1,134 @@
-﻿@{
+﻿@model IEnumerable<ArticulosWeb.Models.Anuncio>
+@{
     ViewData["Title"] = "Home Page";
 }
-
+<style>
+    .imagen {
+        width: 100%;
+        height:100%;
+    }
+    .portafolio-item{
+        position:relative;
+        overflow: hidden;
+    }
+    .portafolio-text {
+        position: center;
+        bottom: 0;
+        padding: 20px;
+        background: #808080;
+    }
+    p {
+        color: aliceblue;
+    }
+    .titulo{
+        color:black;
+    }
+</style>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido</h1>
+        <p class="titulo">Publicaciones, eventos importantes y Promociones.</p>
 </div>
+<body>
+    <div class="container">
+        @if (ViewBag.Cant!=0) {
+        @for (int i = 0; i <= ViewBag.Datopo; i++)
+        {
+            int condd = 0;
+        <div class="row mi-fila">
+            @if (condd <= ViewBag.Datopo)
+            {
+            <div class="col-6 mi-columna" style="text-align:center">
+                <div class="portafolio-container">
+                    <section class="portafolio-item">
+                        <section class="portafolio-text">
+                            <h2>@ViewData["TituloPar" + i]</h2>
+                            <p>
+                                @ViewData["DescripcionPar" + i]
+                            </p>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+                                Ver Imagen
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="
+
+
+                                 Title1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">@condd</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2>@ViewData["TituloPar" + i]</h2>
+                                            <img src="@ViewData["anuncioFotoPar" + i]" class="imagen" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </section>
+                </div>
+
+            </div>
+                condd++;
+            }
+
+                @if (condd <= ViewBag.Datopo)
+                {
+            <div class="col-6 mi-columna" style="text-align:center">
+
+                <div class="portafolio-container">
+                    <section class="portafolio-item">
+                        <section class="portafolio-text">
+                            <h2>@ViewData["TituloImpar" + i]</h2>
+                            <p>
+                                @ViewData["DescripcionImpar" + i]
+                            </p>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                Ver Imagen
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2>@ViewData["TituloImpar" + i]</h2>
+                                            <img src="@ViewData["anuncioFotoImpar" + i]" class="imagen" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </section>
+                </div>
+
+            </div>
+                }
+            
+        </div>
+        }}
+        </div>
+</body>

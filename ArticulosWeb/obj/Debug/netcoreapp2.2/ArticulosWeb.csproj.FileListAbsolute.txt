@@ -87,11 +87,6 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.Ta
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.TagHelpers.output.cache
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\ArticulosWeb.RazorCoreGenerate.cache
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Create.g.cshtml.cs
-D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Delete.g.cshtml.cs
-D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Details.g.cshtml.cs
-D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Edit.g.cshtml.cs
-D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Index.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AppInventario\Create.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AppInventario\Delete.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\AppInventario\Details.g.cshtml.cs
@@ -192,3 +187,8 @@ D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Ide
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Contratar\Contratar.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Create.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Delete.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Details.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Edit.g.cshtml.cs
+D:\ArticuloWebDev\articulos\ArticulosWeb\obj\Debug\netcoreapp2.2\Razor\Views\Anuncios\Index.g.cshtml.cs

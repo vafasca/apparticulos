@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArticulosWeb.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace ArticulosWeb.Controllers
 {
-    [Authorize(Roles = "Administrador,Usuario")]
     public class AnunciosController : Controller
     {
         private readonly InventarioDBWContext _context;
@@ -55,26 +55,40 @@ namespace ArticulosWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnuncioId,Titulo,Descripcion,FotoAnuncio,Gestion")] Anuncio anuncio)
+        public async Task<IActionResult> Create([Bind("Titulo,Descripcion,Gestion")] Anuncio anuncio, List<IFormFile> file)
         {
             if (ModelState.IsValid)
             {
-                string a = "";
-                int aux = 1;
-                var bb = _context.Anuncio
-                       .OrderByDescending(p => p.AnuncioId)
-                       .FirstOrDefault();
-                if (bb == null)
+                //--------------------
+                //ViewData["dato1"] = galeria.NombreFoto;//kick
+                foreach (var item in file)
                 {
-                    anuncio.AnuncioId = aux;
+                    if (item.Length > 0)
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await item.CopyToAsync(stream);
+                            anuncio.FotoAnuncio = stream.ToArray();
+                            //stream.Close();  
+                            int aux = 1;
+                            var bb = _context.Anuncio
+                                   .OrderByDescending(p => p.AnuncioId)
+                                   .FirstOrDefault();
+                            if (bb == null)
+                            {
+                                anuncio.AnuncioId = aux;
+                            }
+                            else
+                            {
+                                aux = bb.AnuncioId;
+                                anuncio.AnuncioId = aux + 1;
+                            }
+                            _context.Add(anuncio);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
                 }
-                else
-                {
-                    aux = bb.AnuncioId;
-                    anuncio.AnuncioId = aux + 1;
-                }
-                _context.Add(anuncio);
-                await _context.SaveChangesAsync();
+                //--------------------
                 return RedirectToAction(nameof(Index));
             }
             return View(anuncio);

@@ -79,12 +79,9 @@
                                     <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                                 </li>
                             }
-                            @if (User.IsInRole("Administrador") || User.IsInRole("Trabajar"))
-                            {
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Anuncios" asp-action="Index">Anuncios</a>
                                 </li>
-                            }
                             @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
                             {
                                 <li class="nav-item">
