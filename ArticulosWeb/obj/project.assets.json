@@ -13500,11 +13500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\ArticulosWeb.csproj",
+      "projectUniqueName": "D:\\heroku\\apparticulos\\ArticulosWeb\\ArticulosWeb.csproj",
       "projectName": "ArticulosWeb",
-      "projectPath": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\ArticulosWeb.csproj",
+      "projectPath": "D:\\heroku\\apparticulos\\ArticulosWeb\\ArticulosWeb.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-      "outputPath": "D:\\ArticuloWebDev\\articulos\\ArticulosWeb\\obj\\",
+      "outputPath": "D:\\heroku\\apparticulos\\ArticulosWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
