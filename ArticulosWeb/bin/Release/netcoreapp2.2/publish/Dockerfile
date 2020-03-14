@@ -1,16 +1,17 @@
-DE microsoft / dotnet: 2.2-sdk AS build-env
-WORKDIR / app
 
-# Copie csproj y restaure como capas distintas
-COPY * .csproj ./
-RUN dotNET restaurar
+FROM microsoft/dotnet:2.2-sdk AS build-env
+WORKDIR /app
 
-# Copia todo lo demás y construye
-COPIA . ./
-EJECUTAR dotnet Publique -c Lanzamiento -o fuera
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-# Crear imagen de tiempo de ejecución
-DE microsoft / dotnet: 2.2-aspnetcore-runtime
-WORKDIR / app
-COPY --from = build-env / app / out.
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /app
+COPY --from=build-env /app/out .
 CMD dotnet AspNetCoreHerokuDocker.dll
